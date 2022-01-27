@@ -46,7 +46,7 @@ describe('EventEditorComponent', () => {
     fixture = TestBed.createComponent(EventEditorComponent);
     component = fixture.componentInstance;
     eventServiceGetSpy =
-      jest.spyOn<EventService, any>(component.eventService, 'get');
+      jest.spyOn<EventService, any>(component['eventService'], 'get');
     fixture.detectChanges();
   });
 
