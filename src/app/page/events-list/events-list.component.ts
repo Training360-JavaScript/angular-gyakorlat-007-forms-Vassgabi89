@@ -11,15 +11,15 @@ import { EventService } from 'src/app/service/event.service';
 })
 export class EventsListComponent implements OnInit {
 
-  eventList: Observable<Event[]> = this.eService.getAll();
+  eventList: Observable<Event[]> = this.eventService.getAll();
 
   event!: Event
 
-  constructor(private aR: ActivatedRoute, private eService: EventService) {}
+  constructor(private aR: ActivatedRoute, private eventService: EventService) {}
 
   ngOnInit(): void {
     this.aR.params.subscribe(param => {
-      this.eService.get(param['id']).forEach(event => {
+      this.eventService.get(param['id']).forEach(event => {
         this.event = event
       })
     })

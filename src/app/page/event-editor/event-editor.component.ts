@@ -10,22 +10,21 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./event-editor.component.scss']
 })
 export class EventEditorComponent implements OnInit {
-  [x: string]: EventService;
 
   @Input() event!: Event
 
-  constructor(private aR: ActivatedRoute, private eService: EventService) {}
+  constructor(private aR: ActivatedRoute, private eventService: EventService) {}
 
   ngOnInit(): void {
     this.aR.params.subscribe(param => {
-      this.eService.get(param['id']).forEach(event => {
+      this.eventService.get(param['id']).forEach(event => {
         this.event = event
       })
     })
   }
 
   onUpdate(form: NgForm):void {
-    this.eService.update(this.event).forEach(event => {
+    this.eventService.update(this.event).forEach(event => {
       console.log('Updated event: ', event)
     })
   }

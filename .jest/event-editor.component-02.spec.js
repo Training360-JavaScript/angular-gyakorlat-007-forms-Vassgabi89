@@ -50354,19 +50354,19 @@ If '${name}' is a directive input, make sure the directive is imported by the cu
 
   // src/app/page/event-editor/event-editor.component.ts
   var EventEditorComponent = class {
-    constructor(aR, eService) {
+    constructor(aR, eventService) {
       this.aR = aR;
-      this.eService = eService;
+      this.eventService = eventService;
     }
     ngOnInit() {
       this.aR.params.subscribe((param) => {
-        this.eService.get(param["id"]).forEach((event) => {
+        this.eventService.get(param["id"]).forEach((event) => {
           this.event = event;
         });
       });
     }
     onUpdate(form) {
-      this.eService.update(this.event).forEach((event) => {
+      this.eventService.update(this.event).forEach((event) => {
         console.log("Updated event: ", event);
       });
     }
